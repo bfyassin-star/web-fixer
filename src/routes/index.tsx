@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
-import heroImage from "@/assets/hero-welding.jpg";
+import heroReformas from "@/assets/hero-reformas.jpg";
 import imgReformas from "@/assets/serv-reformas.jpg";
 import imgClima from "@/assets/serv-climatizacion.jpg";
 import imgMecanica from "@/assets/serv-mecanica.jpg";
@@ -9,6 +9,7 @@ import imgSoldadura from "@/assets/serv-soldadura.jpg";
 import imgElectricidad from "@/assets/serv-electricidad.jpg";
 import imgMantenimiento from "@/assets/serv-mantenimiento.jpg";
 import imgMudanzas from "@/assets/serv-mudanzas.jpg";
+import imgDinos from "@/assets/dinos-telefono.jpg";
 
 const WHATSAPP_URL =
   "https://wa.me/34658513114?text=Hola%20SERVIAYA%2C%20necesito%20informaci%C3%B3n%20sobre%20un%20servicio.";
@@ -21,13 +22,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "SERVIAYA conecta particulares y empresas con profesionales para reformas, mecánica industrial, soldadura, electricidad, mantenimiento, mudanzas y otros servicios en Osona.",
+          "SERVIAYA conecta particulares y empresas con profesionales para reformas integrales, mecánica industrial, soldadura, electricidad, mantenimiento, mudanzas y otros servicios en Osona.",
       },
       { property: "og:title", content: "SERVIAYA | Servicios profesionales en Osona" },
       {
         property: "og:description",
         content:
-          "Reformas, mecánica industrial, soldadura, electricidad, mantenimiento y mudanzas en Osona. Un solo contacto, muchas soluciones.",
+          "Reformas integrales, mecánica industrial, soldadura, electricidad, mantenimiento y mudanzas en Osona. Un solo contacto, muchas soluciones.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -40,7 +41,7 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "SERVIAYA",
           description:
-            "Servicios profesionales en Osona: reformas, mecánica industrial, soldadura, electricidad, mantenimiento y mudanzas.",
+            "Servicios profesionales en Osona: reformas integrales, mecánica industrial, soldadura, electricidad, mantenimiento y mudanzas.",
           email: EMAIL,
           telephone: "+34658513114",
           areaServed: "Osona, Barcelona",
@@ -55,6 +56,7 @@ export const Route = createFileRoute("/")({
 
 const NAV_LINKS = [
   { label: "Servicios", href: "#servicios" },
+  { label: "Dinos qué tienes", href: "#dinos" },
   { label: "Industria", href: "#industria" },
   { label: "Cómo trabajamos", href: "#como-trabajamos" },
 ];
@@ -98,13 +100,6 @@ const SERVICES = [
   },
 ];
 
-const MOSAIC = [
-  { label: "Reformas", image: imgReformas },
-  { label: "Climatización", image: imgClima },
-  { label: "Mudanzas", image: imgMudanzas },
-  { label: "Mecánica industrial", image: imgMecanica },
-];
-
 const INDUSTRY_ITEMS = [
   {
     title: "Averías y mantenimiento",
@@ -126,17 +121,14 @@ const INDUSTRY_ITEMS = [
 
 const STEPS = [
   {
-    number: "01 · CUÉNTANOS",
     title: "Explícanos qué necesitas",
     text: "Por WhatsApp, teléfono o mediante la web. Una foto o un vídeo también puede ayudar.",
   },
   {
-    number: "02 · BUSCAMOS",
     title: "Encontramos al profesional",
     text: "Seleccionamos el perfil que mejor encaja con el trabajo que necesitas.",
   },
   {
-    number: "03 · NOS ENCARGAMOS",
     title: "Coordinamos el servicio",
     text: "Te acompañamos durante el proceso para que tengas un único punto de contacto.",
   },
@@ -144,8 +136,8 @@ const STEPS = [
 
 function Brand() {
   return (
-    <a href="#inicio" className="text-[1.45rem] font-black tracking-tight text-foreground">
-      SERVI<span className="text-primary">AYA</span>
+    <a href="#inicio" className="font-heading text-[1.4rem] font-bold tracking-tight text-primary">
+      SERVIAYA
     </a>
   );
 }
@@ -170,19 +162,19 @@ function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border scrim-header backdrop-blur-xl">
-      <div className="container-brand flex min-h-[72px] items-center justify-between gap-5">
+      <div className="container-brand flex h-[72px] items-center justify-between gap-5">
         <Brand />
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Navegación principal">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground/85 transition-colors hover:text-primary-glow"
+              className="text-[13px] font-bold uppercase tracking-wider text-foreground/75 transition-colors hover:text-primary"
             >
               {link.label}
             </a>
           ))}
-          <a href="#contacto" className="btn-brand !px-4 !py-2.5">
+          <a href="#dinos" className="btn-brand !px-5 !py-2.5">
             Contactar
           </a>
         </nav>
@@ -191,7 +183,7 @@ function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          className="grid size-11 place-items-center rounded-full border border-border bg-foreground/5 text-foreground md:hidden"
+          className="grid size-11 place-items-center rounded-full border border-border bg-card text-foreground md:hidden"
         >
           {open ? (
             <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
@@ -207,7 +199,7 @@ function Header() {
       {open && (
         <nav
           aria-label="Navegación principal"
-          className="border-t border-border bg-background/95 px-4 py-4 backdrop-blur-xl md:hidden"
+          className="border-t border-border bg-card/95 px-4 py-4 backdrop-blur-xl md:hidden"
         >
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
@@ -220,7 +212,7 @@ function Header() {
                 {link.label}
               </a>
             ))}
-            <a href="#contacto" onClick={() => setOpen(false)} className="btn-brand mt-2 w-full">
+            <a href="#dinos" onClick={() => setOpen(false)} className="btn-brand mt-2 w-full">
               Contactar
             </a>
           </div>
@@ -232,65 +224,50 @@ function Header() {
 
 function Hero() {
   return (
-    <section
-      id="inicio"
-      className="relative isolate flex min-h-[min(800px,92vh)] items-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-40"
-    >
-      <img
-        src={heroImage}
-        alt=""
-        aria-hidden="true"
-        width={1920}
-        height={1080}
-        className="absolute inset-0 -z-20 size-full object-cover"
-      />
-      <div className="scrim-hero absolute inset-0 -z-10" />
-      <div className="hero-glow absolute inset-0 -z-10" />
-      <div className="container-brand grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <div className="eyebrow animate-rise mb-5">Servicios profesionales · Osona</div>
-          <h1 className="display animate-rise-2 mb-5 text-[clamp(2.9rem,7vw,5.9rem)] text-foreground">
+    <section id="inicio" className="grid overflow-hidden pt-[72px] lg:grid-cols-2">
+      <div className="order-2 flex items-center px-6 py-14 sm:px-8 lg:order-1 lg:min-h-[calc(100vh-72px)] lg:px-16 lg:py-0 xl:px-20">
+        <div className="mx-auto w-full max-w-xl">
+          <div className="eyebrow animate-rise mb-7">Servicios profesionales · Osona</div>
+          <h1 className="display animate-rise-2 mb-7 text-[clamp(2.6rem,6.5vw,4.7rem)]">
             Un solo contacto.
             <br />
             <span className="text-primary">Muchas soluciones.</span>
           </h1>
-          <p className="animate-rise-2 mb-8 max-w-[700px] text-[clamp(1.05rem,2vw,1.3rem)] text-foreground/85">
-            Tú nos cuentas lo que necesitas. Nosotros buscamos al profesional adecuado y nos
-            encargamos de coordinarlo.
+          <p className="animate-rise-2 mb-9 text-[clamp(1.05rem,1.8vw,1.25rem)] leading-relaxed text-muted-foreground">
+            Especialistas en <strong className="font-bold text-foreground">reformas integrales</strong>.
+            Coordinamos todos los gremios para que tú no tengas que preocuparte por nada.
           </p>
           <div className="animate-rise-3 flex flex-wrap gap-3">
-            <a href="#contacto" className="btn-brand min-h-[50px]">
-              Cuéntanos qué necesitas
+            <a href="#dinos" className="btn-brand min-h-[52px] px-7 text-base">
+              Presupuesto gratuito
             </a>
-            <a href="#servicios" className="btn-ghost min-h-[50px]">
-              Ver servicios
+            <a href="#servicios" className="btn-ghost min-h-[52px] px-7 text-base">
+              Nuestros servicios
             </a>
           </div>
         </div>
+      </div>
 
+      <div className="order-1 relative min-h-[440px] lg:order-2 lg:min-h-[calc(100vh-72px)]">
+        <img
+          src={heroReformas}
+          width={1024}
+          height={1360}
+          alt="Salón reformado con luz cálida y acabados de madera"
+          className="absolute inset-0 size-full object-cover"
+        />
         <div
-          className="animate-rise-2 mx-auto grid w-full max-w-md grid-cols-2 grid-rows-2 gap-3 lg:max-w-none"
-          aria-label="Ejemplos de trabajos"
+          className="absolute inset-x-5 bottom-5 rounded-3xl border border-border bg-card/95 p-6 backdrop-blur-md sm:inset-x-8 sm:bottom-8 sm:p-7"
+          style={{ boxShadow: "var(--shadow-float)" }}
         >
-          {MOSAIC.map((item) => (
-            <div
-              key={item.label}
-              className="relative min-h-[150px] overflow-hidden rounded-3xl border border-border sm:min-h-[190px]"
-              style={{ boxShadow: "var(--shadow-float)" }}
-            >
-              <img
-                src={item.image}
-                alt=""
-                aria-hidden="true"
-                className="size-full object-cover"
-                loading="lazy"
-              />
-              <div className="scrim-mosaic absolute inset-0" />
-              <span className="absolute bottom-3 left-4 text-sm font-extrabold text-foreground">
-                {item.label}
-              </span>
-            </div>
-          ))}
+          <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.14em] text-primary">
+            Servicio estrella
+          </p>
+          <h2 className="display mb-2 text-2xl sm:text-3xl">Reformas integrales</h2>
+          <p className="text-sm text-muted-foreground sm:text-base">
+            Cocinas, baños y hogares completos. Del primer diseño a la entrega de llaves, nosotros
+            coordinamos todo.
+          </p>
         </div>
       </div>
     </section>
@@ -302,36 +279,112 @@ function Services() {
     <section id="servicios" className="scroll-mt-20 bg-surface py-16 md:py-24">
       <div className="container-brand">
         <div className="mb-9 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
-          <h2 className="display text-[clamp(2rem,4vw,3.2rem)] text-foreground">
-            Un equipo para muchas necesidades.
-          </h2>
+          <h2 className="display text-[clamp(2rem,4vw,3.1rem)]">¿En qué podemos ayudarte?</h2>
           <p className="max-w-[560px] text-muted-foreground">
-            Particulares y empresas pueden contar con SERVIAYA para encontrar y coordinar
-            profesionales de confianza.
+            Soluciones integrales para particulares e industria. Busca tu servicio y cuéntanoslo.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
+          {SERVICES.map((service, i) => (
             <article
               key={service.title}
-              className="group relative isolate flex min-h-[250px] flex-col justify-end overflow-hidden rounded-3xl border border-border bg-card p-6"
+              className={`group overflow-hidden rounded-3xl border border-border bg-card transition-transform hover:-translate-y-1 ${
+                i === 0 ? "ring-2 ring-primary" : ""
+              }`}
               style={{ boxShadow: "var(--shadow-float)" }}
             >
               <img
                 src={service.image}
                 alt=""
                 aria-hidden="true"
-                className="absolute inset-0 -z-20 size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width={1024}
+                height={1024}
+                className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="scrim-card absolute inset-0 -z-10" />
-              <div className="absolute left-4 top-4 grid size-11 place-items-center rounded-xl border border-border bg-background/70 font-black text-primary backdrop-blur-md">
-                {service.letter}
+              <div className="p-5">
+                <div className="mb-2.5 flex items-center gap-2">
+                  <span className="grid size-9 place-items-center rounded-xl bg-primary/10 text-sm font-black text-primary">
+                    {service.letter}
+                  </span>
+                  {i === 0 && (
+                    <span className="rounded-full bg-primary px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide text-primary-foreground">
+                      Servicio estrella
+                    </span>
+                  )}
+                </div>
+                <h3 className="mb-1.5 text-lg font-bold text-foreground">{service.title}</h3>
+                <p className="text-sm text-muted-foreground">{service.text}</p>
               </div>
-              <h3 className="mb-1.5 text-lg font-bold text-foreground">{service.title}</h3>
-              <p className="max-w-[95%] text-sm text-foreground/80">{service.text}</p>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Dinos() {
+  return (
+    <section id="dinos" className="scroll-mt-20 bg-foreground py-16 text-background md:py-24">
+      <div className="container-brand grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-3 py-1.5 text-xs font-bold tracking-wide">
+            <span className="size-2 rounded-full bg-primary" />
+            Fácil desde el primer mensaje
+          </p>
+          <h2 className="display mb-5 text-[clamp(2.2rem,5vw,3.4rem)]">Dinos qué tienes.</h2>
+          <p className="mb-8 text-lg leading-relaxed text-background/85">
+            Envíanos una <strong className="font-bold text-primary">imagen</strong>, un{" "}
+            <strong className="font-bold text-primary">vídeo</strong> o un{" "}
+            <strong className="font-bold text-primary">texto</strong> contándonos qué necesitas y
+            estaremos ahí. No hace falta saber de obras: cuéntanoslo como te salga y nosotros nos
+            encargamos.
+          </p>
+          <div className="mb-8 flex flex-wrap gap-2">
+            {["📷 Imagen", "🎥 Vídeo", "💬 Texto"].map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-background/20 px-4 py-1.5 text-sm font-semibold text-background/85"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-brand min-h-[52px] px-7 text-base"
+            >
+              Escríbenos por WhatsApp
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="btn-ghost min-h-[52px] px-7 text-base !border-background/25 !bg-background/10 !text-background hover:!bg-background/20"
+            >
+              {EMAIL}
+            </a>
+          </div>
+        </div>
+        <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+          <img
+            src={imgDinos}
+            width={1024}
+            height={1024}
+            alt="Persona grabando con el móvil una avería en casa para enviarla por WhatsApp"
+            className="aspect-square size-full rounded-[2.5rem] object-cover"
+            loading="lazy"
+          />
+          <div
+            className="absolute -right-3 -top-4 grid size-28 place-items-center rounded-full bg-primary p-3 text-center text-sm font-extrabold leading-tight text-primary-foreground sm:size-32"
+            style={{ boxShadow: "var(--shadow-float)" }}
+          >
+            Respuesta
+            <br />
+            rápida
+          </div>
         </div>
       </div>
     </section>
@@ -343,7 +396,7 @@ function Industria() {
     <section id="industria" className="scroll-mt-20 bg-background py-16 md:py-24">
       <div className="container-brand">
         <div className="mb-9 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
-          <h2 className="display text-[clamp(2rem,4vw,3.2rem)] text-foreground">
+          <h2 className="display text-[clamp(2rem,4vw,3.1rem)]">
             También nos movemos en industria.
           </h2>
           <p className="max-w-[560px] text-muted-foreground">
@@ -360,15 +413,15 @@ function Industria() {
             />
             <div className="scrim-panel absolute inset-0" />
             <div className="absolute inset-x-7 bottom-6">
-              <h3 className="display mb-2 text-2xl text-foreground">Del problema a la solución.</h3>
-              <p className="text-foreground/80">
+              <h3 className="display mb-2 text-2xl text-background">Del problema a la solución.</h3>
+              <p className="text-background/85">
                 Un único contacto para encontrar profesionales y coordinar trabajos.
               </p>
             </div>
           </div>
           <div className="grid gap-3 self-center">
             {INDUSTRY_ITEMS.map((item) => (
-              <div key={item.title} className="rounded-2xl border border-border bg-card/60 p-5">
+              <div key={item.title} className="rounded-2xl border border-border bg-card p-5">
                 <b className="mb-1 block font-bold text-foreground">{item.title}</b>
                 <span className="text-muted-foreground">{item.text}</span>
               </div>
@@ -384,20 +437,22 @@ function Steps() {
   return (
     <section id="como-trabajamos" className="scroll-mt-20 bg-surface py-16 md:py-24">
       <div className="container-brand">
-        <div className="mb-9 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
-          <h2 className="display text-[clamp(2rem,4vw,3.2rem)] text-foreground">Así de fácil.</h2>
+        <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
+          <h2 className="display text-[clamp(2rem,4vw,3.1rem)]">Así de fácil.</h2>
           <p className="max-w-[560px] text-muted-foreground">
             Queremos quitarte trabajo, llamadas y quebraderos de cabeza.
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {STEPS.map((step) => (
-            <article
-              key={step.number}
-              className="rounded-2xl border-t-[3px] border-t-primary bg-card/40 p-6"
-            >
-              <div className="text-sm font-black tracking-[0.08em] text-primary">{step.number}</div>
-              <h3 className="mb-2 mt-3 text-lg font-bold text-foreground">{step.title}</h3>
+        <div className="grid gap-8 md:grid-cols-3">
+          {STEPS.map((step, i) => (
+            <article key={step.title} className="text-center">
+              <div
+                className="mx-auto mb-5 grid size-16 place-items-center rounded-full border-4 border-primary bg-card font-heading text-xl font-bold text-primary"
+                style={{ boxShadow: "var(--shadow-float)" }}
+              >
+                {i + 1}
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-foreground">{step.title}</h3>
               <p className="text-muted-foreground">{step.text}</p>
             </article>
           ))}
@@ -409,14 +464,15 @@ function Steps() {
 
 function Contact() {
   return (
-    <section id="contacto" className="scroll-mt-20 bg-background py-20 md:py-24">
+    <section id="contacto" className="scroll-mt-20 bg-background py-16 md:py-24">
       <div className="container-brand">
-        <div className="grid gap-6 rounded-[2rem] border border-border bg-foreground/[0.045] p-6 md:grid-cols-[1.1fr_0.9fr] md:p-9">
+        <div
+          className="grid gap-6 rounded-[2rem] border border-border bg-card p-6 md:grid-cols-[1.1fr_0.9fr] md:p-9"
+          style={{ boxShadow: "var(--shadow-float)" }}
+        >
           <div>
             <div className="eyebrow mb-4">SERVIAYA · Osona</div>
-            <h2 className="display mb-4 text-[clamp(2.2rem,5vw,3.4rem)] text-foreground">
-              ¿Qué necesitas?
-            </h2>
+            <h2 className="display mb-4 text-[clamp(2.2rem,5vw,3.2rem)]">¿Qué necesitas?</h2>
             <p className="mb-6 max-w-[640px] text-muted-foreground">
               Cuéntanos el trabajo y te ayudaremos a encontrar la solución adecuada. No hace falta
               complicarse.
@@ -436,17 +492,17 @@ function Contact() {
             </div>
           </div>
           <div className="grid content-center gap-3">
-            <div className="rounded-2xl border border-border bg-background/40 p-5">
+            <div className="rounded-2xl border border-border bg-background/60 p-5">
               <small className="mb-1 block text-xs text-muted-foreground">Respuesta</small>
               <strong className="font-semibold text-foreground">
                 Intentamos responder rápido.
               </strong>
             </div>
-            <div className="rounded-2xl border border-border bg-background/40 p-5">
+            <div className="rounded-2xl border border-border bg-background/60 p-5">
               <small className="mb-1 block text-xs text-muted-foreground">Zona</small>
               <strong className="font-semibold text-foreground">Osona y alrededores.</strong>
             </div>
-            <div className="rounded-2xl border border-border bg-background/40 p-5">
+            <div className="rounded-2xl border border-border bg-background/60 p-5">
               <small className="mb-1 block text-xs text-muted-foreground">La idea</small>
               <strong className="font-semibold text-foreground">
                 Tú pides. Nosotros nos encargamos.
@@ -461,10 +517,18 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-surface-deep">
+    <footer className="border-t border-border bg-card">
       <div className="container-brand flex flex-col items-start justify-between gap-3 py-7 text-sm text-muted-foreground md:flex-row md:items-center">
-        <div>© 2026 SERVIAYA</div>
-        <div>Servicios profesionales · Osona</div>
+        <div className="font-heading text-base font-bold text-primary">SERVIAYA</div>
+        <div className="flex flex-wrap gap-4">
+          <a href="tel:+34658513114" className="transition-colors hover:text-primary">
+            +34 658 513 114
+          </a>
+          <a href={`mailto:${EMAIL}`} className="transition-colors hover:text-primary">
+            {EMAIL}
+          </a>
+        </div>
+        <div>© 2026 SERVIAYA · Vic, Osona</div>
       </div>
     </footer>
   );
@@ -493,6 +557,7 @@ function Index() {
       <main>
         <Hero />
         <Services />
+        <Dinos />
         <Industria />
         <Steps />
         <Contact />
@@ -502,3 +567,5 @@ function Index() {
     </div>
   );
 }
+
+export default Index;
