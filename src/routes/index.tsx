@@ -31,6 +31,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
+    ],
+    scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
