@@ -31,6 +31,9 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-glow: var(--primary-glow);
   --color-surface: var(--surface);
+  --color-surface-deep: var(--surface-deep);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -59,6 +62,9 @@
   --primary-glow: oklch(0.79 0.152 72);
 
   --surface: oklch(0.19 0.006 240);
+  --surface-deep: oklch(0.145 0.006 240);
+  --whatsapp: oklch(0.72 0.17 155);
+  --whatsapp-foreground: oklch(0.99 0.005 150);
   --secondary: oklch(0.21 0.007 240);
   --secondary-foreground: oklch(0.975 0.004 95);
   --muted: oklch(0.21 0.007 240);
