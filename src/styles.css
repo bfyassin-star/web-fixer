@@ -121,6 +121,10 @@
 }
 
 @layer components {
+  .container-brand {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
   /* Photo overlays: every photo card gets a readable gradient scrim from tokens */
   .scrim-hero {
     background:

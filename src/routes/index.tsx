@@ -32,9 +32,6 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
       {
-        scripts: undefined,
-      },
-      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
@@ -170,8 +167,8 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/8 scrim-header backdrop-blur-xl">
-      <div className="container-nav mx-auto flex min-h-[72px] items-center justify-between gap-5 px-4 sm:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border scrim-header backdrop-blur-xl">
+      <div className="container-brand flex min-h-[72px] items-center justify-between gap-5">
         <Brand />
         <nav className="hidden items-center gap-6 md:flex" aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
@@ -221,11 +218,7 @@ function Header() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contacto"
-              onClick={() => setOpen(false)}
-              className="btn-brand mt-2 w-full"
-            >
+            <a href="#contacto" onClick={() => setOpen(false)} className="btn-brand mt-2 w-full">
               Contactar
             </a>
           </div>
@@ -237,16 +230,21 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative isolate flex min-h-[min(800px,92vh)] items-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-40">
+    <section
+      id="inicio"
+      className="relative isolate flex min-h-[min(800px,92vh)] items-center overflow-hidden pb-16 pt-32 md:pb-20 md:pt-40"
+    >
       <img
         src={heroImage}
         alt=""
         aria-hidden="true"
+        width={1920}
+        height={1080}
         className="absolute inset-0 -z-20 size-full object-cover"
       />
       <div className="scrim-hero absolute inset-0 -z-10" />
       <div className="hero-glow absolute inset-0 -z-10" />
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="container-brand grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <div className="eyebrow animate-rise mb-5">Servicios profesionales · Osona</div>
           <h1 className="display animate-rise-2 mb-5 text-[clamp(2.9rem,7vw,5.9rem)] text-foreground">
@@ -268,14 +266,23 @@ function Hero() {
           </div>
         </div>
 
-        <div className="animate-rise-2 grid grid-cols-2 grid-rows-2 gap-3 max-lg:mx-auto max-lg:max-w-md" aria-label="Ejemplos de trabajos">
+        <div
+          className="animate-rise-2 mx-auto grid w-full max-w-md grid-cols-2 grid-rows-2 gap-3 lg:max-w-none"
+          aria-label="Ejemplos de trabajos"
+        >
           {MOSAIC.map((item) => (
             <div
               key={item.label}
-              className="relative min-h-[150px] overflow-hidden rounded-3xl border border-white/12 sm:min-h-[190px]"
+              className="relative min-h-[150px] overflow-hidden rounded-3xl border border-border sm:min-h-[190px]"
               style={{ boxShadow: "var(--shadow-float)" }}
             >
-              <img src={item.image} alt="" aria-hidden="true" className="size-full object-cover" loading="lazy" />
+              <img
+                src={item.image}
+                alt=""
+                aria-hidden="true"
+                className="size-full object-cover"
+                loading="lazy"
+              />
               <div className="scrim-mosaic absolute inset-0" />
               <span className="absolute bottom-3 left-4 text-sm font-extrabold text-foreground">
                 {item.label}
@@ -291,7 +298,7 @@ function Hero() {
 function Services() {
   return (
     <section id="servicios" className="scroll-mt-20 bg-surface py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-brand">
         <div className="mb-9 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
           <h2 className="display text-[clamp(2rem,4vw,3.2rem)] text-foreground">
             Un equipo para muchas necesidades.
@@ -316,7 +323,7 @@ function Services() {
                 loading="lazy"
               />
               <div className="scrim-card absolute inset-0 -z-10" />
-              <div className="absolute left-4 top-4 grid size-11 place-items-center rounded-xl border border-white/16 bg-background/70 font-black text-primary backdrop-blur-md">
+              <div className="absolute left-4 top-4 grid size-11 place-items-center rounded-xl border border-border bg-background/70 font-black text-primary backdrop-blur-md">
                 {service.letter}
               </div>
               <h3 className="mb-1.5 text-lg font-bold text-foreground">{service.title}</h3>
@@ -332,7 +339,7 @@ function Services() {
 function Industria() {
   return (
     <section id="industria" className="scroll-mt-20 bg-background py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-brand">
         <div className="mb-9 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
           <h2 className="display text-[clamp(2rem,4vw,3.2rem)] text-foreground">
             También nos movemos en industria.
@@ -374,7 +381,7 @@ function Industria() {
 function Steps() {
   return (
     <section id="como-trabajamos" className="scroll-mt-20 bg-surface py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-brand">
         <div className="mb-9 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-6">
           <h2 className="display text-[clamp(2rem,4vw,3.2rem)] text-foreground">Así de fácil.</h2>
           <p className="max-w-[560px] text-muted-foreground">
@@ -401,7 +408,7 @@ function Steps() {
 function Contact() {
   return (
     <section id="contacto" className="scroll-mt-20 bg-background py-20 md:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-brand">
         <div className="grid gap-6 rounded-[2rem] border border-border bg-foreground/[0.045] p-6 md:grid-cols-[1.1fr_0.9fr] md:p-9">
           <div>
             <div className="eyebrow mb-4">SERVIAYA · Osona</div>
@@ -413,7 +420,12 @@ function Contact() {
               complicarse.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-brand min-h-[50px]">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-brand min-h-[50px]"
+              >
                 Escríbenos por WhatsApp
               </a>
               <a href={`mailto:${EMAIL}`} className="btn-ghost min-h-[50px]">
@@ -424,7 +436,9 @@ function Contact() {
           <div className="grid content-center gap-3">
             <div className="rounded-2xl border border-border bg-background/40 p-5">
               <small className="mb-1 block text-xs text-muted-foreground">Respuesta</small>
-              <strong className="font-semibold text-foreground">Intentamos responder rápido.</strong>
+              <strong className="font-semibold text-foreground">
+                Intentamos responder rápido.
+              </strong>
             </div>
             <div className="rounded-2xl border border-border bg-background/40 p-5">
               <small className="mb-1 block text-xs text-muted-foreground">Zona</small>
@@ -432,7 +446,9 @@ function Contact() {
             </div>
             <div className="rounded-2xl border border-border bg-background/40 p-5">
               <small className="mb-1 block text-xs text-muted-foreground">La idea</small>
-              <strong className="font-semibold text-foreground">Tú pides. Nosotros nos encargamos.</strong>
+              <strong className="font-semibold text-foreground">
+                Tú pides. Nosotros nos encargamos.
+              </strong>
             </div>
           </div>
         </div>
@@ -443,8 +459,8 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-[oklch(0.145_0.006_240)]">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 px-4 py-7 text-sm text-muted-foreground sm:px-6 md:flex-row md:items-center">
+    <footer className="border-t border-border bg-surface-deep">
+      <div className="container-brand flex flex-col items-start justify-between gap-3 py-7 text-sm text-muted-foreground md:flex-row md:items-center">
         <div>© 2026 SERVIAYA</div>
         <div>Servicios profesionales · Osona</div>
       </div>
@@ -460,11 +476,8 @@ function WhatsAppFloat() {
       rel="noopener noreferrer"
       aria-label="Contactar con SERVIAYA por WhatsApp"
       title="Contactar por WhatsApp"
-      className="fixed bottom-[max(16px,env(safe-area-inset-bottom))] right-4 z-[100] grid size-[58px] place-items-center rounded-full text-white transition-transform hover:-translate-y-1 hover:scale-[1.04] sm:right-[22px] sm:bottom-[22px] sm:size-[62px]"
-      style={{
-        background: "#25D366",
-        boxShadow: "var(--shadow-float)",
-      }}
+      className="fixed bottom-[max(16px,env(safe-area-inset-bottom))] right-4 z-[100] grid size-[58px] place-items-center rounded-full bg-whatsapp text-whatsapp-foreground transition-transform hover:-translate-y-1 hover:scale-[1.04] sm:bottom-[22px] sm:right-[22px] sm:size-[62px]"
+      style={{ boxShadow: "var(--shadow-float)" }}
     >
       <WhatsAppIcon className="block size-8 sm:size-[34px]" />
     </a>
